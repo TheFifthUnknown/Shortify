@@ -1,2 +1,2 @@
-# project-c-sharp
+# Shortify
 Project is using C#
