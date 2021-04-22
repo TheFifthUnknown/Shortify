@@ -1,0 +1,64 @@
+﻿@page 
+@model IndexModel
+@using Models
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-3 text-lg-center" style="border-block-end">Shortify</h1>
+    <content class="justify-content-center ">
+        <table class="table d-table-row table-borderless">
+            <thead></thead>
+            <tbody class="">
+                <tr>
+                    <td class="border-right border-dark w-auto">
+                        @if (Model.redirect != "")
+                        {
+                            <p>Clicking to redirect <a asp-controller="Redirect" asp-action="Get" asp-route-ShortLink=@Model.redirect target="_blank">Link</a>.</p>
+                        }
+                        else
+                        {
+                            <p></p>
+                        }
+                        <form method="POST">
+                            <div>
+                                <p>
+                                    @if (Model.redirect != "")
+                                    {
+                                        <input name="link" class="form-control" placeholder="You can input URL" value="@(HttpContext.Request.Host +"/"+Model.redirect)" />
+                                    }
+                                    else
+                                    {
+                                        <input name="link" class="form-control" placeholder="You can input URL" value="@Model.redirect" />
+                                    }
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <input class="btn btn-primary float-md-right" type="submit" value="Send" />
+                                </p>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <div>
+                            <h4 class="font-weight-normal" style="border-block-end">Why Shortify?</h4>
+                            <ul>
+                                <li>
+                                    <h6 class="text-left font-weight-normal" style="border-block-end">Our name is similar to Spotify</h6>
+                                </li>
+                                <li>
+                                    <h6 class="text-left font-weight-normal" style="border-block-end">We are free, but Spotify is not</h6>
+                                </li>
+                                <li>
+                                    <h6 class="text-left font-weight-normal" style="border-block-end">Our page is minimalistic</h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </content>
+</div>
